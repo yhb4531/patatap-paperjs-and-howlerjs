@@ -14,185 +14,221 @@
             sound: new Howl({
                 src: ['sounds/bubbles.mp3']
                 }),
-            color: '#1abc9c'
+            color: '#1abc9c',
+            type: 'triangle'
             },
             w: {
             sound: new Howl({
                 src: ['sounds/clay.mp3']
                 }),
-            color: '#2ecc71'
+            color: '#2ecc71',
+            type: 'pentagon'
             },
             e: {
             sound: new Howl({
                 src: ['sounds/confetti.mp3']
                 }),
-            color: '#3498db'
+            color: '#3498db',
+            type: 'heptagon'
             },
             r: {
             sound: new Howl({
                 src: ['sounds/corona.mp3']
                 }),
-            color: '#9b59b6'
+            color: '#9b59b6',
+            type: 'star'
             },
             t: {
             sound: new Howl({
                 src: ['sounds/dotted-spiral.mp3']
                 }),
-            color: '#34495e'
+            color: '#34495e',
+            type: 'circle'
             },
             y: {
             sound: new Howl({
                 src: ['sounds/flash-1.mp3']
                 }),
-            color: '#16a085'
+            color: '#16a085',
+            type: 'star'
             },
             u: {
             sound: new Howl({
                 src: ['sounds/flash-2.mp3']
                 }),
-            color: '#27ae60'
+            color: '#27ae60',
+            type: 'triangle'
             },
             i: {
             sound: new Howl({
                 src: ['sounds/flash-3.mp3']
                 }),
-            color: '#2980b9'
+            color: '#2980b9',
+            type: 'circle'
             },
             o: {
             sound: new Howl({
                 src: ['sounds/glimmer.mp3']
                 }),
-            color: '#8e44ad'
+            color: '#8e44ad',
+            type: 'star'
             },
             p: {
             sound: new Howl({
                 src: ['sounds/moon.mp3']
                 }),
-            color: '#2c3e50'
+            color: '#2c3e50',
+            type: 'circle'
             },
             a: {
             sound: new Howl({
                 src: ['sounds/pinwheel.mp3']
                 }),
-            color: '#f1c40f'
+            color: '#f1c40f',
+            type: 'star'
             },
             s: {
             sound: new Howl({
                 src: ['sounds/piston-1.mp3']
                 }),
-            color: '#e67e22'
+            color: '#e67e22',
+            type: 'triangle'
             },
             d: {
             sound: new Howl({
                 src: ['sounds/piston-2.mp3']
                 }),
-            color: '#e74c3c'
+            color: '#e74c3c',
+            type: 'heptagon'
             },
             f: {
             sound: new Howl({
                 src: ['sounds/prism-1.mp3']
                 }),
-            color: '#95a5a6'
+            color: '#95a5a6',
+            type: 'star'
             },
             g: {
             sound: new Howl({
                 src: ['sounds/prism-2.mp3']
                 }),
-            color: '#f39c12'
+            color: '#f39c12',
+            type: 'rectangle'
             },
             h: {
             sound: new Howl({
                 src: ['sounds/prism-3.mp3']
                 }),
-            color: '#d35400'
+            color: '#d35400',
+            type: 'circle'
             },
             j: {
             sound: new Howl({
                 src: ['sounds/splits.mp3']
                 }),
-            color: '#1abc9c'
+            color: '#1abc9c',
+            type: 'triangle'
             },
             k: {
             sound: new Howl({
                 src: ['sounds/squiggle.mp3']
                 }),
-            color: '#2ecc71'
+            color: '#2ecc71',
+            type: 'pentagon'
             },
             l: {
             sound: new Howl({
                 src: ['sounds/strike.mp3']
                 }),
-            color: '#3498db'
+            color: '#3498db',
+            type: 'circle'
             },
             z: {
             sound: new Howl({
                 src: ['sounds/suspension.mp3']
                 }),
-            color: '#9b59b6'
+            color: '#9b59b6',
+            type: 'heptagon'
             },
             x: {
             sound: new Howl({
                 src: ['sounds/timer.mp3']
                 }),
-            color: '#34495e'
+            color: '#34495e',
+            type: 'rectangle'
             },
             c: {
             sound: new Howl({
                 src: ['sounds/ufo.mp3']
                 }),
-            color: '#16a085'
+            color: '#16a085',
+            type: 'triangle'
             },
             v: {
             sound: new Howl({
                 src: ['sounds/veil.mp3']
                 }),
-            color: '#27ae60'
+            color: '#27ae60',
+            type: 'circle'
             },
             b: {
             sound: new Howl({
                 src: ['sounds/wipe.mp3']
                 }),
-            color: '#2980b9'
+            color: '#2980b9',
+            type: 'heptagon'
             },
             n: {
             sound: new Howl({
                 src: ['sounds/zig-zag.mp3']
                 }),
-            color: '#8e44ad'
+            color: '#8e44ad',
+            type: 'rectangle'
             },
             m: {
             sound: new Howl({
                 src: ['sounds/moon.mp3']
                 }),
-            color: '#2c3e50'
+            color: '#2c3e50',
+            type: 'circle'
             }
         }
 
-
-        var circles = [];
+        var shapes = [];
         function onKeyDown(event){
             if(keyData[event.key]){
-                console.log(keyData[event.key].color);
                 var point = new Point(view.size.width, view.size.height) * Point.random();
 
                 //This wouldn't work because it would only return the last variable "yellow"
-                // circles.push(new Path.Circle(point, 10).fillColor = "yellow");
-
-                var circle = new Path.Circle(point, 300);
-                circle.fillColor = keyData[event.key].color;
+                // shapes.push(new Path.Circle(point, 10).fillColor = "yellow");
+                if(keyData[event.key].type === 'rectangle'){
+                    var shape = new Path.Rectangle(point, 300,300);
+                }else if(keyData[event.key].type === 'circle'){
+                    var shape = new Path.Circle(point, 300);
+                }else if(keyData[event.key].type === 'triangle'){
+                    var shape = new Path.RegularPolygon(point, 3, 300);
+                }else if(keyData[event.key].type === 'pentagon'){
+                    var shape = new Path.RegularPolygon(point, 5, 300);
+                }else if(keyData[event.key].type === 'heptagon'){
+                    var shape = new Path.RegularPolygon(point, 6, 300);
+                }else if(keyData[event.key].type === 'star'){
+                    var shape = new Path.Star(point, 5, 150, 300);
+                }
+                // var circle = new Path.Circle(point, 300);
+                shape.fillColor = keyData[event.key].color;
                 keyData[event.key].sound.play();
-                circles.push(circle);
+                shapes.push(shape);
             }
 
         }
 
         function onFrame(event){
-            for(var i=0; i<circles.length; i++){
-                circles[i].fillColor.hue += 1;
-                circles[i].scale(.95);
-                if(circles[i].area < 1){
-                    circles[i].remove(); //removes from canvas
-                    circles.splice(i, 1); //removes from array
+            for(var i=0; i<shapes.length; i++){
+                shapes[i].fillColor.hue += 1;
+                shapes[i].scale(.95);
+                if(shapes[i].area < 1){
+                    shapes[i].remove(); //removes from canvas
+                    shapes.splice(i, 1); //removes from array
                 }
             }
         }
