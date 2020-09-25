@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="practice-1.css">
+    <script src="paper-full.js"></script>
+    <script type="text/paperscript" canvas="mycanvas">
+
+        var circle = new Path.Circle(new Point(50,50), 10);
+        circle.fillColor = "yellow";
+
+        for(var i= 0; i < 10; i++){
+            var xcopy = circle.clone();
+            xcopy.position.x += i * xcopy.bounds.width * 5;
+            for(var j = 0; j < 10; j++){
+                var ycopy = xcopy.clone();
+                ycopy.position.y += j * ycopy.bounds.width * 5;
+            }
+        }
+
+        //instructor method
+        for(var x=0;x<1000;x+=100){
+            for(var y=0;y<1000;y+=100){
+                var circle = new Path.Circle(new Point(x,y), 10);
+                circle.fillColor = "yellow";
+            }
+        }
+    </script>
+</head>
+<body>
+    <canvas id="mycanvas"></canvas>
+</body>
+</html>
